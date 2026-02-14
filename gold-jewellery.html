@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gold Jewellery Collection | Sai Sarthak Jewellers Indore</title>
+    <meta
+      name="description"
+      content="Explore our exquisite gold jewellery collection at Sai Sarthak Jewellers in Sarafa Bazaar, Indore. Shop 22K & 24K gold rings, necklaces, earrings, bangles, and traditional designs."
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Gold Jewellery Collection | Sai Sarthak Jewellers"
+    />
+    <meta
+      property="og:description"
+      content="Explore our exquisite gold jewellery collection at Sai Sarthak Jewellers in Sarafa Bazaar, Indore."
+    />
+    <meta property="og:image" content="/public/images/og-image.jpg" />
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      /* Page-specific styles */
+      .page-header {
+        background: var(--burgundy-gradient);
+        color: var(--pure-white);
+        padding: 4rem 0;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .page-header h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: var(--light-gold);
+        margin-bottom: 1rem;
+      }
+
+      .page-header p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .filter-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: var(--pure-white);
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .filter-group {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1.5rem;
+        border: 1px solid var(--border-light);
+        background: var(--pure-white);
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--burgundy-gradient);
+        color: var(--pure-white);
+        border-color: transparent;
+      }
+
+      /* Improved product grid with equal height cards */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .product-card {
+        background: var(--pure-white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        transition: transform 0.3s;
+        border: 1px solid var(--border-light);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+      }
+
+      .product-img {
+        height: 280px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--gold-gradient-medium);
+        color: var(--light-burgundy);
+        padding: 0.3rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        z-index: 2;
+      }
+
+      .product-info {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .product-info h3 {
+        font-size: 1.4rem;
+        color: var(--light-burgundy);
+        margin-bottom: 0.5rem;
+        /* Truncate long titles */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 3.5rem;
+      }
+
+      .product-category {
+        color: var(--primary-gold);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        /* Truncate if needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Price removed - hiding the price element */
+      .product-price {
+        display: none;
+      }
+
+      .product-meta {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .product-meta i {
+        color: var(--primary-gold);
+        margin-right: 0.3rem;
+      }
+
+      .product-meta span {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* Product description with truncation */
+      .product-description {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+        /* Truncate after 3 lines */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 4.2rem;
+        line-height: 1.5;
+      }
+
+      /* Style for inquiry button */
+      .btn-inquiry {
+        display: inline-block;
+        background: var(--burgundy-gradient);
+        color: var(--pure-white);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        font-family: "Poppins", sans-serif;
+        border: none;
+        width: 100%;
+        text-align: center;
+        margin-top: auto; /* Pushes button to bottom */
+      }
+
+      .btn-inquiry:hover {
+        background: var(--gold-gradient-medium);
+        color: var(--light-burgundy);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 3rem 0;
+      }
+
+      .page-link {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .page-link.active,
+      .page-link:hover {
+        background: var(--burgundy-gradient);
+        color: var(--pure-white);
+        border-color: transparent;
+      }
+
+      .price-note {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: var(--warm-beige);
+        border-radius: 8px;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+
+      .price-note i {
+        color: var(--primary-gold);
+        margin-right: 0.5rem;
+      }
+
+      /* Indian Hallmark Sign Styles */
+      .hallmark-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--gold-gradient-light);
+        padding: 0.2rem 0.8rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--light-burgundy);
+        border: 1px solid var(--primary-gold);
+        margin-bottom: 0.5rem;
+      }
+
+      .hallmark-badge i {
+        color: var(--primary-gold);
+        font-size: 1rem;
+      }
+
+      .hallmark-badge .bis-logo {
+        font-weight: 700;
+        color: var(--light-burgundy);
+      }
+
+      /* BIS Hallmark Icon */
+      .bis-hallmark-icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: var(--primary-gold);
+        color: var(--light-burgundy);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 4px;
+      }
+
+      /* Add this to product meta for hallmark */
+      .hallmark-indicator {
+        display: inline-flex;
+        align-items: center;
+        background: #fff3e0;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        color: #8b4513;
+        border-left: 3px solid var(--primary-gold);
+      }
+
+      .hallmark-indicator i {
+        color: #d4af37;
+        margin-right: 4px;
+      }
+
+      /* Equal height grid fix */
+      .best-sellers .categories-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media (max-width: 768px) {
+        .best-sellers .categories-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .best-sellers .categories-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header (same as index.html) -->
+    <header>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <i class="fas fa-crown"></i> Sai Sarthak Jewellers
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/gold-jewellery.html" class="active">Gold</a></li>
+            <li><a href="/silver-jewellery.html">Silver</a></li>
+            <li><a href="/bridal-collection.html">Bridal</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Gold Jewellery Collection</h1>
+        <p>
+          Discover our exquisite collection of 22K and 24K gold jewellery,
+          handcrafted with traditional and contemporary designs
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="container">
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/best-sellers/24k gold.webp&quot;);
+            "
+          >
+            <div class="product-badge">New</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Gold Ring</div>
+            <h3>24K Gold Diamond Ring with Intricate Filigree Design</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> 12-15g</span>
+              <span><i class="fas fa-gem"></i> 0.5ct Diamond</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #d4af37"></i> 24K
+                (999)</span
+              >
+            </div>
+            <p class="product-description">
+              Exquisite gold ring with brilliant diamond and intricate filigree
+              design. Perfect for engagements and special occasions.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/gold/necklace.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Bestseller</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Gold Necklace</div>
+            <h3>Traditional Gold Necklace with Temple Motifs</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> 25-30g</span>
+              <span><i class="fas fa-gem"></i> Temple Design</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #d4af37"></i> 22K
+                (916)</span
+              >
+            </div>
+            <p class="product-description">
+              Traditional gold necklace with temple motifs and diamond accents.
+              Handcrafted by skilled artisans.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/best-sellers/gold bangle set.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Trending</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Gold Bangles</div>
+            <h3>Gold Bangle Set Traditional Design</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> 40-50g</span>
+              <span><i class="fas fa-gem"></i> Traditional</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #d4af37"></i> 22K
+                (916)</span
+              >
+            </div>
+            <p class="product-description">
+              Set of three handcrafted gold bangles with traditional Indian
+              motifs and intricate detailing.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/gold/earrings.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Popular</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Gold Earrings</div>
+            <h3>Gold Earrings with Kundan Work</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> 15-20g</span>
+              <span><i class="fas fa-gem"></i> Kundan Work</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #d4af37"></i> 22K
+                (916)</span
+              >
+            </div>
+            <p class="product-description">
+              Traditional gold jhumka earrings with intricate kundan work.
+              Perfect for weddings and festivals.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/gold/ring.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Men's</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Gold Ring</div>
+            <h3>Men's Heavy Weight Gold Ring Contemporary Design</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> 12-18g</span>
+              <span><i class="fas fa-gem"></i> Contemporary</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #d4af37"></i> 22K
+                (916)</span
+              >
+            </div>
+            <p class="product-description">
+              Heavy weight men's gold ring with contemporary design and matte
+              finish. Hallmarked purity guaranteed.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/gold/mangalsutra.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Sacred</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Gold Necklace</div>
+            <h3>Gold Mangalsutra with Diamond Pendant</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> 12-20g</span>
+              <span><i class="fas fa-gem"></i> Diamond Pendant</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #d4af37"></i> 22K
+                (916)</span
+              >
+            </div>
+            <p class="product-description">
+              Elegant gold mangalsutra with diamond pendant. Traditional design
+              with modern elegance.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price Note - Gold Rate Disclaimer -->
+    <div class="container">
+      <div class="price-note">
+        <i class="fas fa-info-circle"></i> Gold prices are subject to daily
+        market rates. Please visit our store or contact us for current pricing.
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section class="best-sellers" style="background-color: var(--pure-white)">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose Our Gold Jewellery</h2>
+        </div>
+        <div class="categories-grid">
+          <div class="category-card" style="background: var(--warm-beige)">
+            <div class="category-icon"><i class="fas fa-check-circle"></i></div>
+            <h3>BIS Hallmarked</h3>
+            <p>
+              All our gold jewellery comes with BIS hallmarks (916 for 22K, 999
+              for 24K) ensuring purity and quality.
+            </p>
+          </div>
+          <div class="category-card" style="background: var(--warm-beige)">
+            <div class="category-icon">
+              <i class="fas fa-hand-sparkles"></i>
+            </div>
+            <h3>Handcrafted by Artisans</h3>
+            <p>
+              Each piece is handcrafted by skilled artisans with decades of
+              experience in traditional Indian jewellery making.
+            </p>
+          </div>
+          <div class="category-card" style="background: var(--warm-beige)">
+            <div class="category-icon"><i class="fas fa-tag"></i></div>
+            <h3>Live Market Rates</h3>
+            <p>
+              Prices based on daily market rates with transparent billing and no
+              hidden charges.
+            </p>
+          </div>
+          <div class="category-card" style="background: var(--warm-beige)">
+            <div class="category-icon"><i class="fas fa-rotate-left"></i></div>
+            <h3>Exchange Available</h3>
+            <p>
+              Exchange your old gold jewellery for new designs with easy process
+              and fair valuation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>

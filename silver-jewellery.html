@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silver Jewellery Collection | Sai Sarthak Jewellers Indore</title>
+    <meta
+      name="description"
+      content="Explore our beautiful silver jewellery collection at Sai Sarthak Jewellers in Sarafa Bazaar, Indore. Shop silver necklaces, bangles, earrings, temple jewellery, and more."
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Silver Jewellery Collection | Sai Sarthak Jewellers"
+    />
+    <meta
+      property="og:description"
+      content="Explore our beautiful silver jewellery collection at Sai Sarthak Jewellers in Sarafa Bazaar, Indore."
+    />
+    <meta property="og:image" content="/public/images/og-image.jpg" />
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      /* Page-specific styles - Updated Silver Gradient */
+      .page-header {
+        background: linear-gradient(
+          135deg,
+          #c0c0c0,
+          /* Silver */ #706868,
+          /* Highlight */ #847c7c,
+          /* Light Silver */ #a8a9ad,
+          /* Darker Silver */ #c0c0c0 /* Silver */
+        );
+        /* Proper silver/grey gradient */
+        color: var(--pure-white);
+        padding: 4rem 0;
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 70%
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        20% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .page-header h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: var(--light-gold);
+        position: relative;
+        z-index: 2;
+      }
+
+      .page-header p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Silver Feature Section */
+      .silver-feature {
+        background: var(--pure-white);
+        padding: 3rem;
+        border-radius: 12px;
+        margin-bottom: 3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e0e0e0;
+      }
+
+      /* Product Grid with Equal Height Cards */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .product-card {
+        background: var(--pure-white);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        transition: transform 0.3s;
+        border: 1px solid var(--border-light);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+      }
+
+      .product-img {
+        height: 280px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--gold-gradient-medium);
+        color: var(--light-burgundy);
+        padding: 0.3rem 1rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        z-index: 2;
+      }
+
+      .product-info {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .product-info h3 {
+        font-size: 1.4rem;
+        color: var(--light-burgundy);
+        margin-bottom: 0.5rem;
+        /* Truncate long titles */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 3.5rem;
+      }
+
+      .product-category {
+        color: var(--primary-gold);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        /* Truncate if needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Hide prices */
+      .product-price {
+        display: none;
+      }
+
+      .product-meta {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .product-meta i {
+        color: var(--primary-gold);
+        margin-right: 0.3rem;
+      }
+
+      .product-meta span {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      /* Product description with truncation */
+      .product-description {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+        /* Truncate after 3 lines */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 4.2rem;
+        line-height: 1.5;
+      }
+
+      /* Purity indicator for silver */
+      .purity-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: #f0f0f0;
+        padding: 0.2rem 0.8rem;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        border-left: 3px solid #71797e;
+      }
+
+      .purity-badge i {
+        color: #71797e;
+      }
+
+      .purity-badge span {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #4a4a4a;
+      }
+
+      /* Style for inquiry button */
+      .btn-inquiry {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          #4a4a4a,
+          #71797e
+        ); /* Silver gradient */
+        color: var(--pure-white);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        font-family: "Poppins", sans-serif;
+        border: none;
+        width: 100%;
+        text-align: center;
+        margin-top: auto; /* Pushes button to bottom */
+      }
+
+      .btn-inquiry:hover {
+        background: var(--gold-gradient-medium);
+        color: var(--light-burgundy);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+      }
+
+      .price-note {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: var(--warm-beige);
+        border-radius: 8px;
+        color: #4a4a4a;
+        font-style: italic;
+      }
+
+      .price-note i {
+        color: var(--primary-gold);
+        margin-right: 0.5rem;
+      }
+
+      .price-note strong {
+        color: var(--light-burgundy);
+      }
+
+      /* Silver-specific category cards */
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .category-card {
+        background: linear-gradient(135deg, #ffffff, #f5f5f5);
+        border: 1px solid #d0d0d0;
+        border-radius: 12px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-gold);
+      }
+
+      .category-card i {
+        font-size: 2.5rem;
+        color: #71797e;
+        margin-bottom: 1rem;
+      }
+
+      .category-card h3 {
+        color: var(--light-burgundy);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .category-card p {
+        color: #4a4a4a;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .categories-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .categories-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <i class="fas fa-crown"></i> Sai Sarthak Jewellers
+        </a>
+        <button class="menu-toggle" aria-label="Toggle navigation menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/gold-jewellery.html">Gold</a></li>
+            <li><a href="/silver-jewellery.html" class="active">Silver</a></li>
+            <li><a href="/bridal-collection.html">Bridal</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Header - Updated with proper silver gradient and shine effect -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Silver Jewellery Collection</h1>
+        <p>
+          Discover our stunning silver jewellery collection featuring
+          traditional temple designs and contemporary styles
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Grid with Equal Height Cards and Removed Prices -->
+    <section class="container">
+      <div class="product-grid">
+        <!-- Product 1 - Temple Set -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/best-sellers/silver temple set.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Best Seller</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Temple Set</div>
+            <h3>Silver Temple Jewellery Set with Necklace & Earrings</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> Approx. 250g</span>
+              <span><i class="fas fa-gem"></i> Temple Design</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #71797e"></i>
+                92.5% Pure</span
+              >
+            </div>
+            <p class="product-description">
+              Complete temple jewellery set including necklace, earrings, and
+              bangles. Intricate traditional design.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 2 - Silver Necklace -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/silver/necklace.jpg&quot;);
+            "
+          >
+            <div class="product-badge">New</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Necklace</div>
+            <h3>Silver Kundan Necklace with Intricate Detailing</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> Approx. 120g</span>
+              <span><i class="fas fa-gem"></i> Kundan Work</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #71797e"></i>
+                92.5% Pure</span
+              >
+            </div>
+            <p class="product-description">
+              Beautiful silver necklace with kundan work and intricate
+              detailing. Perfect for festive occasions.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 3 - Silver Bangles -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/silver/bangles.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Traditional</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Bangles</div>
+            <h3>Silver Bangles Set (6 pcs) Traditional Design</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span><i class="fas fa-weight-hanging"></i> Approx. 180g</span>
+              <span><i class="fas fa-gem"></i> Traditional</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #71797e"></i>
+                92.5% Pure</span
+              >
+            </div>
+            <p class="product-description">
+              Set of 6 silver bangles with traditional motifs and polished
+              finish. Lightweight and comfortable for daily wear.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 4 - Silver Earrings -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/silver/earrings.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Popular</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Earrings</div>
+            <h3>Silver Earrings with Delicate Work</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span
+                ><i class="fas fa-weight-hanging"></i> Approx. 35g (Pair)</span
+              >
+              <span><i class="fas fa-gem"></i> Jhumka Style</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #71797e"></i>
+                92.5% Pure</span
+              >
+            </div>
+            <p class="product-description">
+              Traditional silver earrings with delicate filigree work.
+              Lightweight and elegant for daily wear.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 5 - Silver Anklets -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/silver/payal.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Trending</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Anklets (Paayal)</div>
+            <h3>Silver Payal with Bell Charms</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span
+                ><i class="fas fa-weight-hanging"></i> Approx. 40g (Pair)</span
+              >
+              <span><i class="fas fa-gem"></i> With Bells</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #71797e"></i>
+                92.5% Pure</span
+              >
+            </div>
+            <p class="product-description">
+              Traditional silver anklets with bell charms. Perfect for festive
+              occasions and weddings.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+
+        <!-- Product 6 - Silver Nose Pin -->
+        <div class="product-card">
+          <div
+            class="product-img"
+            style="
+              background-image: url(&quot;/public/images/silver/nose pin.jpg&quot;);
+            "
+          >
+            <div class="product-badge">Value Set</div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Nose Pin Set</div>
+            <h3>Silver Nose Pin</h3>
+            <!-- Price removed -->
+            <div class="product-meta">
+              <span
+                ><i class="fas fa-weight-hanging"></i> Approx. 5g (Set)</span
+              >
+              <span><i class="fas fa-gem"></i> 3 Designs</span>
+              <span
+                ><i class="fas fa-check-circle" style="color: #71797e"></i>
+                92.5% Pure</span
+              >
+            </div>
+            <p class="product-description">
+              Set of 3 silver nose pins with different traditional designs.
+              Hypoallergenic and lightweight.
+            </p>
+            <a href="/contact.html" class="btn-inquiry">Inquire for Price</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Price Note - Silver Rate Disclaimer -->
+    <div class="container">
+      <div class="price-note">
+        <i class="fas fa-info-circle"></i> Silver prices are subject to daily
+        market rates. Please visit our store or contact us for current pricing.
+      </div>
+    </div>
+
+    <!-- Silver Care Tips - Updated with better styling -->
+    <section
+      class="best-sellers"
+      style="background-color: var(--pure-white); padding: 4rem 0"
+    >
+      <div class="container">
+        <div class="section-title">
+          <h2>Silver Jewellery Care Tips</h2>
+        </div>
+        <div class="categories-grid">
+          <div class="category-card">
+            <i class="fas fa-water"></i>
+            <h3>Avoid Water</h3>
+            <p>
+              Remove silver jewellery while bathing, swimming, or washing hands
+              to prevent tarnish and water spots.
+            </p>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-spray-can"></i>
+            <h3>No Chemicals</h3>
+            <p>
+              Avoid contact with perfumes, hairspray, lotions, and household
+              chemicals that can damage silver.
+            </p>
+          </div>
+          <div class="category-card">
+            <i class="fas fa-cloth"></i>
+            <h3>Regular Cleaning</h3>
+            <p>
+              Polish with a soft silver cloth to maintain shine and prevent
+              tarnish. Store in airtight bags.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>
